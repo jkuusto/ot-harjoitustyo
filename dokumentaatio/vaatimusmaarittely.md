@@ -29,11 +29,14 @@ Tekstikäyttöliittymä sopii hyvin sovelluksen tarkoitukseen perusversiossa.
 
 Sovellusta voi täydentää seuraavilla toiminallisuuksilla:
 
+- Käyttäjä voi muokata hahmon nimeä
+  - Hyödyllinen ominaisuus kirjoitusvirheiden varalle
 - Käyttäjä näkee hakutuloksissa myös käänteishakuna tehdyn listan hahmoista, joita vastaan valittu hahmo on vahva
   - Tämä tieto auttaa käyttäjää muodostamaan ajan mittaan paremman kokonaiskuvan hahmojen välisistä voimasuhteista
 - Käyttäjä voi lisätä kommentteja hahmojen vastavalintatietoihin, kuten suositeltavia taktiikoita tai esine-/loitsuvalintoja
   - Kommentit ovat vastavalintakohtaisia
   - Käyttäjä voi myös muokata kommentteja
+- Käyttäjä voi tallentaa useiden eri pelien tietoja
 - Käyttäjä voi määrittää vastavalinnan vahvuusasteen asteikolla 1-3
   - Tätä tietoa voisi hyödyntää esim. hakutulosten järjestämiseen vahvuusasteen mukaan
   - Vaatii enemmän tietoa ja arviointia käyttäjältä mutta saattaisi olla hyödyllinen työkalu edistyneemmille käyttäjille
