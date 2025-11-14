@@ -6,12 +6,12 @@
 | 05.11. | 2    | vaatimusmäärittelydokumentin laadinta        |
 |        | 1    | työaikadokumentin laadinta                   |
 | 11.11. | 2    | sovelluksen suunnittelu ja alustus           |
-| 14.11. | 3    | tietokantayhteyden rakentaminen              |
-|        |      | hahmoentityn sekä -perusrepositorion koodaus |
+| 14.11. | 2    | tietokantayhteyden rakentaminen              |
+|        | 1    | hahmoentityn sekä -perusrepositorion koodaus |
+|        | 1    | ui:n ja index.py:n koodaus                   |
 |        |      |                                              |
 |        |      |                                              |
 |        |      |                                              |
 |        |      |                                              |
 |        |      |                                              |
-|        |      |                                              |
-|  yht   | 9    |                                              |
+|  yht   | 10   |                                              |
