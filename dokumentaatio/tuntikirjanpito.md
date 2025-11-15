@@ -11,7 +11,7 @@
 |        | 1    | ui:n ja index.py:n koodaus                                 |
 |        | 1    | ensimmäinen testi, coveragen lisäys ja konfigurointi       |
 | 15.11. | 2    | invoke taskien lisäys, changelogin luonti, README-päivitys |
+|        | 2    | sovelluksen testaus virtuaalityöasemalla                   |
 |        |      |                                                            |
 |        |      |                                                            |
-|        |      |                                                            |
-|  yht   | 13   |                                                            |
+|  yht   | 15   |                                                            |
