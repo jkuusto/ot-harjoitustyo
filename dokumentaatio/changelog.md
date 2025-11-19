@@ -18,3 +18,4 @@
 - Lisätty Pylint ja Autopep8 koodikannan siistimiseksi
 - Käyttäjä voi poistaa hahmon
 - Käyttäjän kirjoittama hahmo tunnistetaan kirjainkoosta riippumatta
+- Testattu, että hahmon str ja repr tulostuvat oikein

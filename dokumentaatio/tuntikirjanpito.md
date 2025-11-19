@@ -14,8 +14,8 @@
 |        | 2    | sovelluksen testaus virtuaalityöasemalla                   |
 | 19.11. | 1    | pylintin ja autopep8:n käyttöönotto                        |
 |        | 2    | hahmon poistotoiminnon koodaus                             |
+|        | 1    | loput testit character-luokalle                            |
 |        |      |                                                            |
 |        |      |                                                            |
 |        |      |                                                            |
-|        |      |                                                            |
-|  yht   | 18   |                                                            |
+|  yht   | 19   |                                                            |
