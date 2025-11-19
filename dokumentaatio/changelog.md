@@ -12,3 +12,9 @@
 - Testattu, että hahmo voidaan luoda Character-luokkaa käyttäen
 - Lisätty mahdollisuus luoda coverage-testikattavuusraportti
 - Lisätty invoke-taskit sovelluksen käynnistämiselle, testaukselle ja testikattavuusraportille
+
+## Viikko 4
+
+- Lisätty Pylint ja Autopep8 koodikannan siistimiseksi
+- Käyttäjä voi poistaa hahmon
+- Käyttäjän kirjoittama hahmo tunnistetaan kirjainkoosta riippumatta

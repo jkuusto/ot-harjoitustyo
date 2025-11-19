@@ -12,6 +12,10 @@
 |        | 1    | ensimmäinen testi, coveragen lisäys ja konfigurointi       |
 | 15.11. | 2    | invoke taskien lisäys, changelogin luonti, README-päivitys |
 |        | 2    | sovelluksen testaus virtuaalityöasemalla                   |
+| 19.11. | 1    | pylintin ja autopep8:n käyttöönotto                        |
+|        | 2    | hahmon poistotoiminnon koodaus                             |
 |        |      |                                                            |
 |        |      |                                                            |
-|  yht   | 15   |                                                            |
+|        |      |                                                            |
+|        |      |                                                            |
+|  yht   | 18   |                                                            |

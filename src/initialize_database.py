@@ -16,7 +16,7 @@ def create_tables(connection):
     cursor.execute("""
         CREATE TABLE characters (
             id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL UNIQUE
+            name TEXT NOT NULL UNIQUE COLLATE NOCASE
         );
     """)
 

@@ -18,9 +18,9 @@ Tekstikäyttöliittymä sopii hyvin sovelluksen tarkoitukseen perusversiossa.
 
 ## Perusversion tarjoama toiminnallisuus
 
-- Käyttäjä voi lisätä hahmon
-- Käyttäjä voi nähdä listan kaikista lisätyistä hahmoista
-- Käyttäjä voi poistaa hahmon
+- Käyttäjä voi lisätä hahmon (**tehty**)
+- Käyttäjä voi nähdä listan kaikista lisätyistä hahmoista (**tehty**)
+- Käyttäjä voi poistaa hahmon (**tehty**)
 - Käyttäjä voi lisätä hahmolle vastavalinnan, eli hahmon, jota vastaan muokattava hahmo on heikko
 - Käyttäjä voi poistaa vastavalinnan hahmolta
 - Käyttäjä voi hakea tietyn hahmon ja saada näkyviin listan hahmoista, joita vastaan valittu hahmo on heikko
