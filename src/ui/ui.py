@@ -47,7 +47,7 @@ class UI:
         if not name.strip():
             self._io.write("Character name cannot be empty.\n")
             return
-        
+
         from entities.character import Character
 
         try:

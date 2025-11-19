@@ -1,6 +1,7 @@
 import unittest
 from entities.character import Character
 
+
 class TestCharacter(unittest.TestCase):
     def setUp(self):
         print("No setup created")

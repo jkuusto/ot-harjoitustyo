@@ -1,6 +1,7 @@
 from entities.character import Character
 from database_connection import get_database_connection
 
+
 class CharacterRepository:
     def __init__(self, connection):
         self._connection = connection
@@ -37,5 +38,6 @@ class CharacterRepository:
         cursor.execute("DELETE FROM characters")
 
         self._connection.commit()
+
 
 character_repository = CharacterRepository(get_database_connection())
