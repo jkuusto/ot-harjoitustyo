@@ -4,7 +4,7 @@ from database_connection import get_database_connection
 class CharacterRepository:
     def __init__(self, connection):
         self._connection = connection
-    
+
     def create(self, character):
         cursor = self._connection.cursor()
 
@@ -16,7 +16,7 @@ class CharacterRepository:
         character.character_id = cursor.lastrowid
 
         return character
-    
+
     def find_all(self):
         cursor = self._connection.cursor()
 
@@ -30,7 +30,7 @@ class CharacterRepository:
             characters.append(character)
 
         return characters
-    
+
     def delete_all(self):
         cursor = self._connection.cursor()
 
