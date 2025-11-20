@@ -37,6 +37,15 @@ class TestCharacterRepository(unittest.TestCase):
         self.assertEqual(len(characters), 1)
         self.assertEqual(characters[0].name, self.character1.name)
 
+    def test_character_with_duplicate_name_cannot_be_created_in_db(self):
+        character_repository.create(self.character1)
+        with self.assertRaises(ValueError):
+            character_repository.create(self.character1)
+
+        characters = character_repository.find_all()
+
+        self.assertEqual(len(characters), 1)
+
     def test_all_characters_in_db_can_be_found(self):
         character_repository.create(self.character1)
         character_repository.create(self.character2)

@@ -1,3 +1,4 @@
+import sqlite3
 from entities.character import Character
 from database_connection import get_database_connection
 
@@ -9,8 +10,13 @@ class CharacterRepository:
     def create(self, character):
         cursor = self._connection.cursor()
 
-        cursor.execute("INSERT INTO characters (name) VALUES (?)",
-                       (character.name,))
+        try:
+            cursor.execute("INSERT INTO characters (name) VALUES (?)",
+                           (character.name,))
+        except sqlite3.IntegrityError as error:
+            if "UNIQUE constraint failed" in str(error):
+                raise ValueError(f"Duplicate: {character.name}") from error
+            raise
 
         self._connection.commit()
 

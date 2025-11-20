@@ -15,7 +15,7 @@
 | 19.11. | 1    | pylintin ja autopep8:n käyttöönotto                        |
 |        | 2    | hahmon poistotoiminnon koodaus                             |
 |        | 1    | loput testit character-luokalle                            |
+| 20.11  | 1    | käyttäjäviestin selkeyttäminen, luokkakaavion laadinta     |
+|        | 3    | testitietokannan luonti, hahmorepositorion testien luonti  |
 |        |      |                                                            |
-|        |      |                                                            |
-|        |      |                                                            |
-|  yht   | 19   |                                                            |
+|  yht   | 23   |                                                            |

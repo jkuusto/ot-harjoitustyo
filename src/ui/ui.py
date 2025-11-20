@@ -15,8 +15,8 @@ class UI:
                 self._add_character()
             elif choice == "2":
                 self._delete_character()
-            elif choice == "3":
-                self._io.write("Ending session...\n")
+            elif choice == "x":
+                self._io.write("\nSession closed.\n")
                 break
             else:
                 self._io.write("Invalid choice. Try again.")
@@ -41,7 +41,7 @@ class UI:
         self._io.write("Actions:")
         self._io.write("  1) Add character")
         self._io.write("  2) Delete character")
-        self._io.write("  3) Exit")
+        self._io.write("  x) Exit")
 
     def _add_character(self):
         self._io.write("")
@@ -56,24 +56,27 @@ class UI:
         try:
             character = Character(name.strip())
             self._character_repository.create(character)
-            self._io.write(f"{character.name} added!\n")
+            self._io.write(f"{character.name} added successfully.\n")
         except Exception as e:
-            self._io.write(f"Error: Could not add character. {str(e)}\n")
+            if str(e).startswith("Duplicate"):
+                self._io.write(f"Character '{name}' already exists.\n")
+            else:
+                self._io.write(f"Error: {str(e)}\n")
 
     def _delete_character(self):
         self._io.write("")
         name = self._io.read("Character to delete: ")
 
         if not name.strip():
-            self._io.write("No character selected for deletion.")
+            self._io.write("No character selected for deletion.\n")
             return
 
         try:
             success = self._character_repository.delete_character(name)
 
             if success:
-                self._io.write(f"{name} deleted!\n")
+                self._io.write(f"{name} deleted successfully.\n")
             else:
-                self._io.write(f"{name} not found!\n")
+                self._io.write(f"{name} not found.\n")
         except Exception as e:
             self._io.write(f"Error: Could not delete character. {str(e)}\n")

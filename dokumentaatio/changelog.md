@@ -19,3 +19,7 @@
 - Käyttäjä voi poistaa hahmon
 - Käyttäjän kirjoittama hahmo tunnistetaan kirjainkoosta riippumatta
 - Testattu, että hahmon str ja repr tulostuvat oikein
+- Lisätty testitietokantakonfiguraatio
+- Testattu hahmorepositorion metodien toimivuus
+- Selkeytetty käyttäjäviestejä
+- Lisätty luokkakaavio havainnollistamaan sovelluksen toimintalogiikkaa
