@@ -67,10 +67,10 @@ class UI:
         if not name.strip():
             self._io.write("No character selected for deletion.")
             return
-        
+
         try:
             success = self._character_repository.delete_character(name)
-            
+
             if success:
                 self._io.write(f"{name} deleted!\n")
             else:

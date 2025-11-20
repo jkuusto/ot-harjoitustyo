@@ -31,7 +31,7 @@ class CharacterRepository:
             characters.append(character)
 
         return characters
-    
+
     def delete_character(self, name: str):
         cursor = self._connection.cursor()
 
@@ -42,7 +42,7 @@ class CharacterRepository:
             cursor.execute("DELETE FROM characters WHERE name = ?", (name,))
             self._connection.commit()
             return True
-        
+
         return False
 
     def delete_all(self):
