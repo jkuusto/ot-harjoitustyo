@@ -16,7 +16,13 @@
 poetry install
 ```
 
-2. Suorita vaadittavat alustustoimenpiteet komennolla:
+2. Valinnainen vaihe: Luo oma .env-tiedosto:
+
+```
+cp .env.example .env
+```
+
+3. Suorita vaadittavat alustustoimenpiteet komennolla:
 
 ```
 poetry run invoke build

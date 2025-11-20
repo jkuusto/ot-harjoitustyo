@@ -1,7 +1,8 @@
-.venv
+.venv/
 __pycache__
-.pytest_cache
+.pytest_cache/
 .coverage
-htmlcov
+htmlcov/
 data/
 .vscode/
+.env
