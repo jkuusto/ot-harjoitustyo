@@ -17,5 +17,5 @@
 |        | 1    | loput testit character-luokalle                            |
 | 20.11  | 1    | käyttäjäviestin selkeyttäminen, luokkakaavion laadinta     |
 |        | 3    | testitietokannan luonti, hahmorepositorion testien luonti  |
-|        |      |                                                            |
-|  yht   | 23   |                                                            |
+| 24.11. | 1    | testaus virtuaalikoneella, .coveragerc:n konfigurointi     |
+|  yht   | 24   |                                                            |
