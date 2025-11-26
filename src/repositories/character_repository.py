@@ -24,6 +24,17 @@ class CharacterRepository:
 
         return character
 
+    def find_by_id(self, character_id):
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "SELECT id, name FROM characters WHERE id = ?", (character_id,))
+        row = cursor.fetchone()
+
+        if row:
+            return Character(name=row["name"], character_id=row["id"])
+        return None
+
     def find_all(self):
         cursor = self._connection.cursor()
 

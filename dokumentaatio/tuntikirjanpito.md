@@ -18,4 +18,6 @@
 | 20.11  | 1    | käyttäjäviestin selkeyttäminen, luokkakaavion laadinta     |
 |        | 3    | testitietokannan luonti, hahmorepositorion testien luonti  |
 | 24.11. | 1    | testaus virtuaalikoneella, .coveragerc:n konfigurointi     |
-|  yht   | 24   |                                                            |
+| 25.11. | 3    | counterentityn sekä -repositorion koodaus                  |
+| 26.11. | 3    | countereiden testien koodaus                               |
+|  yht   | 30   |                                                            |

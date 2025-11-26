@@ -46,6 +46,21 @@ class TestCharacterRepository(unittest.TestCase):
 
         self.assertEqual(len(characters), 1)
 
+    def test_character_can_be_found_by_id(self):
+        character_returned = character_repository.create(self.character1)
+        character = character_repository.find_by_id(
+            character_returned.character_id)
+
+        self.assertIsNotNone(character)
+        assert character is not None
+        self.assertEqual(character.character_id,
+                         character_returned.character_id)
+
+    def test_nonexisting_character_can_be_not_be_found_by_id(self):
+        character = character_repository.find_by_id(999999)
+
+        self.assertIsNone(character)
+
     def test_all_characters_in_db_can_be_found(self):
         character_repository.create(self.character1)
         character_repository.create(self.character2)
