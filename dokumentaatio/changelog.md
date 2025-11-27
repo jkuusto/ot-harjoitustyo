@@ -22,4 +22,13 @@
 - Lisätty testitietokantakonfiguraatio
 - Testattu hahmorepositorion metodien toimivuus
 - Selkeytetty käyttäjäviestejä
-- Lisätty luokkakaavio havainnollistamaan sovelluksen toimintalogiikkaa
+- Lisätty luokkakaavio havainnollistamaan sovelluksen rakennetta
+
+## Viikko 5
+
+- Käyttäjä voi lisätä vastavalinnan
+- Käyttäjä voi hakea lisättyjä vastavalintoja hahmolle
+- Testattu, että vastavalinta voidaan lisätä
+- Testattu, että vastavalinnan haku hakee oikeat hahmot
+- Korjattu SQL on delete cascade -bugi
+- Lisätty sekvenssikaavioita havainnollistamaan sovelluksen toimintalogiikkaa

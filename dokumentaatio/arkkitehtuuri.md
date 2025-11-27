@@ -18,3 +18,66 @@ Sovelluksen logiikasta vastaavat luokat Character ja Counter.
         counter_character_id
     }
 ```
+
+## Päätoiminnallisuudet
+
+Tässä kuvataan sovelluksen päätoiminnallisuuksien toimintalogiikkaa sekvenssikaavioina.
+
+### Vastavalintasuhteen luominen
+
+Ennen vastavalintasuhteen luomista, tulee luoda siihen lisättävät hahmot. Kaaviossa oletetaan, että käyttäjä on jo lisännyt sovellukseen hahmot Alice ja Bob.
+
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI
+  participant CharacterRepository
+  participant CounterRepository
+
+  User->>UI: select "Add counter"
+  UI->>User: ask "Character name:"
+  User->>UI: enter "Bob"
+  UI->>CharacterRepository: find_character_by_name("Bob")
+  CharacterRepository-->>UI: character1
+
+  UI->>User: ask "Counter character name:"
+  User->>UI: enter "Alice"
+  UI->>CharacterRepository: find_character_by_name("Alice")
+  CharacterRepository-->>UI: character2
+
+  UI->>CounterRepository: create(character1.id, character2.id)
+  CounterRepository-->>UI: counter
+  UI->>User: display "Counter added: Alice counters Bob."
+```
+
+UI hakee käyttäjän syöttämiä nimiä vastaavat hahmot CharacterRepositorysta, antaa hahmot argumentteina CounterRepositoryn create-metodille, joka palauttaa counter-olion.
+
+### Vastavalintojen hakeminen hahmolle
+
+Kun hahmolle on lisätty vastavalintoja, niitä voidaan hakea:
+
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI
+  participant CharacterRepository
+  participant CounterRepository
+
+  User->>UI: select "Search counters"
+  UI->>User: ask "Character name:"
+  User->>UI: enter "Bob"
+  UI->>CharacterRepository: find_character_by_name("Bob")
+  CharacterRepository-->>UI: character
+
+  UI->>CounterRepository: find_counters_for(character.id)
+  CounterRepository-->>UI: [counter1, counter2, ...]
+
+  loop for each counter
+    UI->>CharacterRepository: find_by_id(counter.counter_character_id)
+    CharacterRepository-->>UI: counter_character
+  end
+
+  UI->>User: display counter list in table
+```
+
+UI hakee käyttäjän syöttämää nimeä vastaavan hahmon CharacterRepositorysta, noutaa vastavalintahahmojen id:t listana CounterRepositorysta, UI hakee id:eitten avulla hahmojen tiedot listana ja esittää ne visuaalisesti taulukoituna käyttäjälle.
