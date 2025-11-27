@@ -20,4 +20,6 @@
 | 24.11. | 1    | testaus virtuaalikoneella, .coveragerc:n konfigurointi     |
 | 25.11. | 3    | counterentityn sekä -repositorion koodaus                  |
 | 26.11. | 3    | countereiden testien koodaus                               |
-|  yht   | 30   |                                                            |
+| 27.11. | 3    | countereiden lisäys- ja hakutoiminnon koodaus UI:hin       |
+|        |      |                                                            |
+|  yht   | 33   |                                                            |

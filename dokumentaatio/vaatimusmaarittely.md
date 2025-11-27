@@ -21,9 +21,9 @@ Tekstikäyttöliittymä sopii hyvin sovelluksen tarkoitukseen perusversiossa.
 - Käyttäjä voi lisätä hahmon (**tehty**)
 - Käyttäjä voi nähdä listan kaikista lisätyistä hahmoista (**tehty**)
 - Käyttäjä voi poistaa hahmon (**tehty**)
-- Käyttäjä voi lisätä hahmolle vastavalinnan, eli hahmon, jota vastaan muokattava hahmo on heikko
+- Käyttäjä voi lisätä hahmolle vastavalinnan, eli hahmon, jota vastaan muokattava hahmo on heikko (**tehty**)
 - Käyttäjä voi poistaa vastavalinnan hahmolta
-- Käyttäjä voi hakea tietyn hahmon ja saada näkyviin listan hahmoista, joita vastaan valittu hahmo on heikko
+- Käyttäjä voi hakea tietyn hahmon ja saada näkyviin listan hahmoista, joita vastaan valittu hahmo on heikko (**tehty**)
 
 ## Jatkokehitysideoita
 
@@ -36,6 +36,8 @@ Sovellusta voi täydentää seuraavilla toiminallisuuksilla:
 - Käyttäjä voi lisätä kommentteja hahmojen vastavalintatietoihin, kuten suositeltavia taktiikoita tai esine-/loitsuvalintoja
   - Kommentit ovat vastavalintakohtaisia
   - Käyttäjä voi myös muokata kommentteja
+- Käyttäjän ei tarvitse lisätä hahmoa ennen vastavalinnan lisäämistä
+  - Automaattinen hahmon luonti vastavalinnan luonnin yhteydessä
 - Käyttäjä voi tallentaa useiden eri pelien tietoja
 - Käyttäjä voi määrittää vastavalinnan vahvuusasteen asteikolla 1-3
   - Tätä tietoa voisi hyödyntää esim. hakutulosten järjestämiseen vahvuusasteen mukaan
