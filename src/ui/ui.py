@@ -13,10 +13,12 @@ class UI:
             choice = self._io.read("Choose action: ")
 
             if choice == "1":
-                self._add_character()
+                self._search_counters()
             elif choice == "2":
-                self._add_counter()
+                self._add_character()
             elif choice == "3":
+                self._add_counter()
+            elif choice == "4":
                 self._delete_character()
             elif choice == "x":
                 self._io.write("\nSession closed.\n")
@@ -42,9 +44,10 @@ class UI:
 
     def _show_menu(self):
         self._io.write("Actions:")
-        self._io.write("  1) Add character")
-        self._io.write("  2) Add counter")
-        self._io.write("  3) Delete character")
+        self._io.write("  1) Search counters")
+        self._io.write("  2) Add character")
+        self._io.write("  3) Add counter")
+        self._io.write("  4) Delete character")
         self._io.write("  x) Exit")
 
     def _find_character_by_name(self, name):
@@ -136,3 +139,35 @@ class UI:
                 self._io.write(f"Error: {str(e)}\n")
         except Exception as e:
             self._io.write(f"Error: Could not add counter. {str(e)}\n")
+
+    def _search_counters(self):
+        self._io.write("")
+        character_name = self._io.read("Character name: ")
+
+        if not character_name.strip():
+            self._io.write("Character name cannot be empty.\n")
+            return
+        
+        character = self._find_character_by_name(character_name.strip())
+
+        if not character:
+            self._io.write(f"Character '{character_name}' not found.\n")
+            return
+        
+        counters = self._counter_repository.find_counters_for(character.character_id)
+
+        if len(counters) == 0:
+            self._io.write(f"No counters found for {character.name}.\n")
+            return
+        
+        self._io.write(f"\nCounters for {character.name}:")
+        self._io.write("Name")
+        self._io.write("----")
+
+        for counter in counters:
+            counter_char = self._character_repository.find_by_id(counter.counter_character_id)
+            self._io.write(counter_char.name)
+
+        self._io.write("")
+        self._io.read("Press Enter to continue... ")
+        self._io.write("")
