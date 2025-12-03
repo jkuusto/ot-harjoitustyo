@@ -42,7 +42,7 @@ class UI:
 
     def _handle_menu_choice(self, choice):
         """Handle user's menu choice.
-        
+
         Returns:
             False if user wants to exit, True otherwise.
         """
@@ -59,7 +59,7 @@ class UI:
             return False
         else:
             self._io.write("Invalid choice. Try again.")
-        
+
         return True
 
     def _show_header(self):
@@ -149,23 +149,23 @@ class UI:
 
     def _prompt_and_find_character(self, prompt):
         """Prompt for character name and find the character.
-        
+
         Returns:
             Character object if found and valid, None otherwise.
         """
         self._io.write("")
         character_name = self._io.read(prompt)
-        
+
         if not character_name.strip():
             self._io.write("Character name cannot be empty.\n")
             return None
-        
+
         character = self._find_character_by_name(character_name.strip())
-        
+
         if not character:
             self._io.write(f"Character '{character_name}' not found.\n")
             return None
-        
+
         return character
 
     def _add_counter(self):
@@ -173,11 +173,12 @@ class UI:
         character = self._prompt_and_find_character("Character name: ")
         if not character:
             return
-        
-        counter_character = self._prompt_and_find_character("Counter character name: ")
+
+        counter_character = self._prompt_and_find_character(
+            "Counter character name: ")
         if not counter_character:
             return
-        
+
         self._create_counter_relationship(character, counter_character)
 
     def _create_counter_relationship(self, character, counter_character):
@@ -203,25 +204,27 @@ class UI:
         character = self._prompt_and_find_character("Character name: ")
         if not character:
             return
-        
-        counters = self._counter_repository.find_counters_for(character.character_id)
-        
+
+        counters = self._counter_repository.find_counters_for(
+            character.character_id)
+
         if len(counters) == 0:
             self._io.write(f"No counters for {character.name} added.\n")
             return
-        
+
         self._display_counter_table(character, counters)
 
     def _display_counter_table(self, character, counters):
         """Display counters in a formatted table."""
         table_data = self._build_counter_table_data(counters)
         table_data.sort(key=lambda row: row[0].lower())
-        
+
         headers = ["\033[1mName\033[0m"]
-        
+
         self._io.write(f"\nCounters for {character.name}:")
         self._io.write("")
-        self._io.write(tabulate(table_data, headers=headers, tablefmt="rounded_grid"))
+        self._io.write(
+            tabulate(table_data, headers=headers, tablefmt="rounded_grid"))
         self._io.write("")
         self._io.read("Press Enter to continue... ")
         self._io.write("")

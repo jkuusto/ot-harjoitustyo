@@ -9,7 +9,7 @@ connection.execute("PRAGMA foreign_keys = ON")
 
 def get_database_connection():
     """Get the shared database connection.
-    
+
     Returns:
         The SQLite connection object configured with Row factory
         and foreign key constraints enabled.
