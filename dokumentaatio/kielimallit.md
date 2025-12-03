@@ -8,6 +8,8 @@ Projektin koodikannassa on osittain kielimallin avulla generoitua koodia seuraav
 - ui.py
   - \_add_counter() ja siihen liittyvät apufunktiot
   - \_search_counters() ja siihen liittyvät apufunktiot
-  - \_handle_menu_choice()
+  - kuinka \_handle_menu_choice() kutsutaan
+- counterpicker_service.py
+  - kaikki metodit
 
-Projektin docstringit ovat alunperin kielimallin kirjoittamia, ja niitä on muokattu tarvittaessa.
+Projektin docstringit ovat alunperin kielimallin kirjoittamia, ja muokattu tarvittaessa.

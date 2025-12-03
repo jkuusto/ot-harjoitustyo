@@ -9,21 +9,18 @@ class UI:
 
     Attributes:
         _io: The console I/O handler.
-        _character_repository: Repository for character data operations.
-        _counter_repository: Repository for counter relationship operations.
+        _service: The business logic service.
     """
 
-    def __init__(self, io, character_repository, counter_repository):
+    def __init__(self, io, counterpicker_service):
         """Initialize a new UI instance.
 
         Args:
             io: The console I/O handler.
-            character_repository: Repository for character operations.
-            counter_repository: Repository for counter operations.
+            counterpicker_service: Service for business logic operations.
         """
         self._io = io
-        self._character_repository = character_repository
-        self._counter_repository = counter_repository
+        self._service = counterpicker_service
 
     def start(self):
         """Start the main application loop.
@@ -70,7 +67,7 @@ class UI:
         """Display the list of all characters in the database."""
         self._io.write("\nCharacters:")
 
-        characters = self._character_repository.find_all()
+        characters = self._service.get_all_characters()
 
         if len(characters) == 0:
             self._io.write("(no characters added)")
@@ -89,44 +86,16 @@ class UI:
         self._io.write("  4) Delete character")
         self._io.write("  x) Exit")
 
-    def _find_character_by_name(self, name):
-        """Find a character by name (case-insensitive).
-
-        Args:
-            name: The name of the character to find.
-
-        Returns:
-            Character object if found, None otherwise.
-        """
-        characters = self._character_repository.find_all()
-        name_lower = name.lower()
-
-        for character in characters:
-            if character.name.lower() == name_lower:
-                return character
-
-        return None
-
     def _add_character(self):
         """Handle adding a new character to the database."""
         self._io.write("")
         name = self._io.read("Enter character name: ")
 
-        if not name.strip():
-            self._io.write("Character name cannot be empty.\n")
-            return
-
-        from entities.character import Character
-
         try:
-            character = Character(name.strip())
-            self._character_repository.create(character)
+            character = self._service.create_character(name)  # Changed
             self._io.write(f"{character.name} added successfully.\n")
-        except Exception as e:
-            if str(e).startswith("Duplicate"):
-                self._io.write(f"Character '{name}' already exists.\n")
-            else:
-                self._io.write(f"Error: {str(e)}\n")
+        except ValueError as e:
+            self._io.write(f"Error: {str(e)}\n")
 
     def _delete_character(self):
         """Handle deleting a character from the database."""
@@ -138,7 +107,7 @@ class UI:
             return
 
         try:
-            success = self._character_repository.delete_character(name)
+            success = self._service.delete_character(name)
 
             if success:
                 self._io.write(f"{name} deleted successfully.\n")
@@ -160,7 +129,7 @@ class UI:
             self._io.write("Character name cannot be empty.\n")
             return None
 
-        character = self._find_character_by_name(character_name.strip())
+        character = self._service.find_character_by_name(character_name)
 
         if not character:
             self._io.write(f"Character '{character_name}' not found.\n")
@@ -184,7 +153,7 @@ class UI:
     def _create_counter_relationship(self, character, counter_character):
         """Create a counter relationship between two characters."""
         try:
-            self._counter_repository.create(
+            self._service.create_counter_relationship(
                 character.character_id,
                 counter_character.character_id
             )
@@ -205,18 +174,37 @@ class UI:
         if not character:
             return
 
-        counters = self._counter_repository.find_counters_for(
+        counter_details = self._service.get_counter_details(
             character.character_id)
 
-        if len(counters) == 0:
+        if len(counter_details) == 0:
             self._io.write(f"No counters for {character.name} added.\n")
             return
 
-        self._display_counter_table(character, counters)
+        self._display_counter_table(character, counter_details)
 
-    def _display_counter_table(self, character, counters):
-        """Display counters in a formatted table."""
-        table_data = self._build_counter_table_data(counters)
+    def _build_counter_table_data(self, counter_details):
+        """Build table data from counter detail dictionaries.
+
+        Args:
+            counter_details: List of dicts with 'counter_id' and 'character_name'.
+
+        Returns:
+            List of lists suitable for tabulate.
+        """
+        table_data = []
+        for detail in counter_details:
+            table_data.append([detail["character_name"]])
+        return table_data
+
+    def _display_counter_table(self, character, counter_details):
+        """Display counters in a formatted table.
+
+        Args:
+            character: The Character object being countered.
+            counter_details: List of counter detail dictionaries.
+        """
+        table_data = self._build_counter_table_data(counter_details)
         table_data.sort(key=lambda row: row[0].lower())
 
         headers = ["\033[1mName\033[0m"]
@@ -228,12 +216,3 @@ class UI:
         self._io.write("")
         self._io.read("Press Enter to continue... ")
         self._io.write("")
-
-    def _build_counter_table_data(self, counters):
-        """Build table data from counter objects."""
-        table_data = []
-        for counter in counters:
-            counter_char = self._character_repository.find_by_id(
-                counter.counter_character_id)
-            table_data.append([counter_char.name])
-        return table_data
