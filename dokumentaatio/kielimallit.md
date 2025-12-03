@@ -6,5 +6,8 @@ Projektin koodikannassa on osittain kielimallin avulla generoitua koodia seuraav
   - create()
   - find_counters_for()
 - ui.py
-  - \_add_counter()
-  - \_search_counters()
+  - \_add_counter() ja siihen liittyvät apufunktiot
+  - \_search_counters() ja siihen liittyvät apufunktiot
+  - \_handle_menu_choice()
+
+Projektin docstringit ovat alunperin kielimallin kirjoittamia, ja niitä on muokattu tarvittaessa.

@@ -2,6 +2,11 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """Drop all database tables.
+
+    Args:
+        connection: The database connection object.
+    """
     cursor = connection.cursor()
 
     cursor.execute("DROP TABLE IF EXISTS counters")
@@ -11,6 +16,14 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """Create all required database tables.
+
+    Creates the characters and counters tables with appropriate
+    constraints and relationships.
+
+    Args:
+        connection: The database connection object.
+    """
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -35,6 +48,11 @@ def create_tables(connection):
 
 
 def initialize_database():
+    """Initialize the database by dropping and recreating all tables.
+
+    This function resets the database to a clean state by dropping
+    existing tables and creating new ones with the current schema.
+    """
     connection = get_database_connection()
     drop_tables(connection)
     create_tables(connection)

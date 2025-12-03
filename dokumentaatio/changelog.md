@@ -32,3 +32,7 @@
 - Testattu, että vastavalinnan haku hakee oikeat hahmot
 - Korjattu SQL on delete cascade -bugi
 - Lisätty sekvenssikaavioita havainnollistamaan sovelluksen toimintalogiikkaa
+
+## Viikko 6
+
+- Lisätty docstringejä koodikannan luettavuuden parantamiseksi

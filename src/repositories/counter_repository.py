@@ -4,10 +4,36 @@ from database_connection import get_database_connection
 
 
 class CounterRepository:
+    """Manages counter-pick relationship data in the database.
+
+    Handles all database operations related to counter relationships between
+    characters, including creating, reading, and deleting counter records.
+
+    Attributes:
+        _connection: The database connection object.
+    """
+
     def __init__(self, connection):
+        """Initialize a new CounterRepository instance.
+
+        Args:
+            connection: The database connection object.
+        """
         self._connection = connection
 
     def create(self, character_id, counter_character_id):
+        """Create a new counter relationship in the database.
+
+        Args:
+            character_id: The database ID of the character being countered.
+            counter_character_id: The database ID of the countering character.
+
+        Returns:
+            The Counter object with updated counter_id.
+
+        Raises:
+            ValueError: If the counter relationship already exists.
+        """
         cursor = self._connection.cursor()
 
         try:
@@ -29,6 +55,15 @@ class CounterRepository:
         return counter
 
     def find_counters_for(self, character_id):
+        """Find all counter relationships for a specific character.
+
+        Args:
+            character_id: The database ID of the character to find counters for.
+
+        Returns:
+            A list of Counter objects representing characters that counter
+            the specified character.
+        """
         cursor = self._connection.cursor()
 
         cursor.execute("""
@@ -51,6 +86,10 @@ class CounterRepository:
         return counters
 
     def delete_all(self):
+        """Delete all counter relationships from the database.
+
+        This method is primarily used for testing purposes.
+        """
         cursor = self._connection.cursor()
 
         cursor.execute("DELETE FROM counters")

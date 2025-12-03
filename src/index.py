@@ -5,6 +5,11 @@ from repositories.counter_repository import counter_repository
 
 
 def main():
+    """Run the application.
+    
+    Initializes the console I/O, UI, and repositories, then starts
+    the main application loop.
+    """
     io = ConsoleIO()
     ui = UI(io, character_repository, counter_repository)
     ui.start()
