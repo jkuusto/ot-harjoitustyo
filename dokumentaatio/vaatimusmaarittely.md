@@ -22,7 +22,7 @@ Tekstikäyttöliittymä sopii hyvin sovelluksen tarkoitukseen perusversiossa.
 - Käyttäjä voi nähdä listan kaikista lisätyistä hahmoista (**tehty**)
 - Käyttäjä voi poistaa hahmon (**tehty**)
 - Käyttäjä voi lisätä hahmolle vastavalinnan, eli hahmon, jota vastaan muokattava hahmo on heikko (**tehty**)
-- Käyttäjä voi poistaa vastavalinnan hahmolta
+- Käyttäjä voi poistaa vastavalinnan hahmolta (**tehty**)
 - Käyttäjä voi hakea tietyn hahmon ja saada näkyviin listan hahmoista, joita vastaan valittu hahmo on heikko (**tehty**)
 
 ## Jatkokehitysideoita

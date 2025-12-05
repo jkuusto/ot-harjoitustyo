@@ -36,3 +36,4 @@
 ## Viikko 6
 
 - Lisätty docstringejä koodikannan luettavuuden parantamiseksi
+- Käyttäjä voi poistaa vastavalintasuhteen

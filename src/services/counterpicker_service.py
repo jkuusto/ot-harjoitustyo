@@ -130,3 +130,15 @@ class CounterPickerService:
             })
 
         return counter_details
+
+    def delete_counter_relationship(self, character_id, counter_character_id):
+        """Delete a counter relationship between two characters.
+
+        Args:
+            character_id: ID of the character being countered.
+            counter_character_id: ID of the character that counters.
+
+        Returns:
+            True if deleted, False if relationship not found.
+        """
+        return self._counter_repository.delete(character_id, counter_character_id)

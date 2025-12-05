@@ -48,8 +48,10 @@ class UI:
         elif choice == "2":
             self._add_counter()
         elif choice == "3":
-            self._add_character()
+            self._delete_counter()
         elif choice == "4":
+            self._add_character()
+        elif choice == "5":
             self._delete_character()
         elif choice == "x":
             self._io.write("\nApplication closed.\n")
@@ -82,8 +84,9 @@ class UI:
         self._io.write("Actions:")
         self._io.write("  1) Search counters")
         self._io.write("  2) Add counter")
-        self._io.write("  3) Add character")
-        self._io.write("  4) Delete character")
+        self._io.write("  3) Delete counter")
+        self._io.write("  4) Add character")
+        self._io.write("  5) Delete character")
         self._io.write("  x) Exit")
 
     def _add_character(self):
@@ -216,3 +219,31 @@ class UI:
         self._io.write("")
         self._io.read("Press Enter to continue... ")
         self._io.write("")
+
+    def _delete_counter(self):
+        """Handle deleting a counter relationship between two characters."""
+        character = self._prompt_and_find_character("Character name: ")
+        if not character:
+            return
+
+        counter_character = self._prompt_and_find_character(
+            "Counter character to remove: "
+        )
+        if not counter_character:
+            return
+
+        success = self._service.delete_counter_relationship(
+            character.character_id,
+            counter_character.character_id
+        )
+
+        if success:
+            self._io.write(
+                f"Counter removed: {counter_character.name} no longer "
+                f"counters {character.name}.\n"
+            )
+        else:
+            self._io.write(
+                f"Counter relationship not found: {counter_character.name} "
+                f"was not set as a counter for {character.name}.\n"
+            )

@@ -85,6 +85,35 @@ class CounterRepository:
 
         return counters
 
+    def delete(self, character_id, counter_character_id):
+        """Delete a counter relationship from the database.
+
+        Args:
+            character_id: The database ID of the character being countered.
+            counter_character_id: The database ID of the countering character.
+
+        Returns:
+            True if the relationship was deleted, False if not found.
+        """
+        cursor = self._connection.cursor()
+
+        cursor.execute("""
+            SELECT id FROM counters
+            WHERE character_id = ? AND counter_character_id = ?
+        """, (character_id, counter_character_id))
+
+        result = cursor.fetchone()
+
+        if result:
+            cursor.execute("""
+                DELETE FROM counters
+                WHERE character_id = ? AND counter_character_id = ?
+            """, (character_id, counter_character_id))
+            self._connection.commit()
+            return True
+
+        return False
+
     def delete_all(self):
         """Delete all counter relationships from the database.
 

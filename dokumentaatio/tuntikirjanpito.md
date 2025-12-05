@@ -23,4 +23,5 @@
 | 27.11. | 3    | countereiden lisäys- ja hakutoiminnon koodaus UI:hin        |
 |        | 2    | sekvenssikaavion laadinta, dokumentaation ylläpito, release |
 | 03.12. | 3    | docstringien kirjoittamista, refaktorointia                 |
-|  yht   | 38   |                                                             |
+| 05.12. | 1    | countereiden poistotoiminnon koodaus                        |
+|  yht   | 39   |                                                             |
