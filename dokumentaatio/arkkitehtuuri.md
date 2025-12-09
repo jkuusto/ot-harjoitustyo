@@ -1,5 +1,24 @@
 # Arkkitehtuurikuvaus
 
+## Rakenne
+
+Ohjelman rakenne noudattaa kolmitasoista kerrosarkkitehtuuria koodin pakkausrakenteen ollessa seuraavanlainen:
+
+```mermaid
+  graph TD
+      UI
+      Services
+      Repositories
+      Entities
+
+      UI --> Services
+      Services --> Repositories
+      Services --> Entities
+      Repositories --> Entities
+```
+
+Pakkaus ui vastaa käyttöliittymästä, services sovelluslogiikasta ja repositories tietojen pysyväistallennuksesta. Pakkauksen entities luokat kuvastavat sovelluksen käyttämiä tietokohteita.
+
 ## Sovelluslogiikka
 
 Sovelluksen logiikasta vastaavat luokat Character ja Counter.
@@ -19,6 +38,15 @@ Sovelluksen logiikasta vastaavat luokat Character ja Counter.
     }
 ```
 
+Toiminnallisista kokonaisuuksista vastaa [CounterPickerService](src/services/counterpicker_service.py). Luokka tarjoaa metodeja käyttöliittymälle kuten:
+
+- `create_character(name)`
+- `get_all_characters()`
+- `create_counter_relationship(character_id, counter_character_id)`
+- `get_counter_details(character_id)`
+
+_CounterPickerServicellä_ on pääsy hahmoihin ja vastavalintasuhteisiin luokkien [CharacterRepository](src/repositories/character_repository.py) ja [CounterRepository](src/repositories/counter_repository.py) kautta. Toteutukset injektoidaan sovelluslogiikalle luokan konstruktorikutsussa.
+
 ## Päätoiminnallisuudet
 
 Tässä kuvataan sovelluksen päätoiminnallisuuksien toimintalogiikkaa sekvenssikaavioina.
@@ -31,26 +59,34 @@ Ennen vastavalintasuhteen luomista, tulee luoda siihen lisättävät hahmot. Kaa
 sequenceDiagram
   actor User
   participant UI
+  participant CounterPickerService
   participant CharacterRepository
   participant CounterRepository
 
   User->>UI: select "Add counter"
+  UI->>UI: _add_counter()
   UI->>User: ask "Character name:"
   User->>UI: enter "Bob"
-  UI->>CharacterRepository: find_character_by_name("Bob")
-  CharacterRepository-->>UI: character1
+  UI->>CounterPickerService: find_character_by_name("Bob")
+  CounterPickerService->>CharacterRepository: find_all()
+  CharacterRepository-->>CounterPickerService: [characters]
+  CounterPickerService-->>UI: character1
 
   UI->>User: ask "Counter character name:"
   User->>UI: enter "Alice"
-  UI->>CharacterRepository: find_character_by_name("Alice")
-  CharacterRepository-->>UI: character2
+  UI->>CounterPickerService: find_character_by_name("Alice")
+  CounterPickerService->>CharacterRepository: find_all()
+  CharacterRepository-->>CounterPickerService: [characters]
+  CounterPickerService-->>UI: character2
 
-  UI->>CounterRepository: create(character1.id, character2.id)
-  CounterRepository-->>UI: counter
+  UI->>CounterPickerService: create_counter_relationship(character1.id, character2.id)
+  CounterPickerService->>CounterRepository: create(character1.id, character2.id)
+  CounterRepository-->>CounterPickerService: counter
+  CounterPickerService-->>UI:
   UI->>User: display "Counter added: Alice counters Bob."
 ```
 
-UI hakee käyttäjän syöttämiä nimiä vastaavat hahmot CharacterRepositorysta, antaa hahmot argumentteina CounterRepositoryn create-metodille, joka palauttaa counter-olion.
+UI hakee käyttäjän syöttämiä nimiä vastaavat hahmot CounterPickerRepositoryn kautta CharacterRepositorysta, annetaan hahmojen ID:t argumentteina CounterRepositoryn create-metodille, joka palauttaa counter-olion.
 
 ### Vastavalintojen hakeminen hahmolle
 
@@ -60,24 +96,31 @@ Kun hahmolle on lisätty vastavalintoja, niitä voidaan hakea:
 sequenceDiagram
   actor User
   participant UI
+  participant CounterPickerService
   participant CharacterRepository
   participant CounterRepository
 
   User->>UI: select "Search counters"
+  UI->>UI: _search_counters()
   UI->>User: ask "Character name:"
   User->>UI: enter "Bob"
-  UI->>CharacterRepository: find_character_by_name("Bob")
-  CharacterRepository-->>UI: character
+  UI->>CounterPickerService: find_character_by_name("Bob")
+  CounterPickerService->>CharacterRepository: find_all()
+  CharacterRepository-->>CounterPickerService: [characters]
+  CounterPickerService-->>UI: character
 
-  UI->>CounterRepository: find_counters_for(character.id)
-  CounterRepository-->>UI: [counter1, counter2, ...]
+  UI->>CounterPickerService: get_counter_details(character.id)
+  CounterPickerService->>CounterRepository: find_counters_for(character.id)
+  CounterRepository-->>CounterPickerService: [counters]
 
   loop for each counter
-    UI->>CharacterRepository: find_by_id(counter.counter_character_id)
-    CharacterRepository-->>UI: counter_character
+    CounterPickerService->>CharacterRepository: find_by_id(counter.counter_character_id)
+    CharacterRepository-->>CounterPickerService: counter_character
   end
 
-  UI->>User: display counter list in table
+  CounterPickerService-->>UI: [counter_details]
+
+  UI->>User: display counter list in table format
 ```
 
-UI hakee käyttäjän syöttämää nimeä vastaavan hahmon CharacterRepositorysta, noutaa vastavalintahahmojen id:t listana CounterRepositorysta, UI hakee id:eitten avulla hahmojen tiedot listana ja esittää ne visuaalisesti taulukoituna käyttäjälle.
+UI hakee käyttäjän syöttämää nimeä vastaavan hahmon CounterPickerServicen kautta CharacterRepositorysta, noudetaan vastavalintahahmojen id:t listana CounterRepositorysta, CounterPickerService hakee id:eitten avulla hahmojen tiedot listana ja UI esittää ne visuaalisesti taulukoituna käyttäjälle.

@@ -95,7 +95,7 @@ class UI:
         name = self._io.read("Enter character name: ")
 
         try:
-            character = self._service.create_character(name)  # Changed
+            character = self._service.create_character(name)
             self._io.write(f"{character.name} added successfully.\n")
         except ValueError as e:
             self._io.write(f"Error: {str(e)}\n")

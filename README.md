@@ -14,19 +14,19 @@
 
 1. Asenna riippuvuudet komennolla:
 
-```
+```bash
 poetry install
 ```
 
 2. Valinnainen vaihe: Luo oma .env-tiedosto:
 
-```
+```bash
 cp .env.example .env
 ```
 
 3. Suorita vaadittavat alustustoimenpiteet komennolla:
 
-```
+```bash
 poetry run invoke build
 ```
 

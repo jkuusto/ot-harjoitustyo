@@ -24,4 +24,5 @@
 |        | 2    | sekvenssikaavion laadinta, dokumentaation ylläpito, release |
 | 03.12. | 3    | docstringien kirjoittamista, refaktorointia                 |
 | 05.12. | 1    | countereiden poistotoiminnon koodaus                        |
-|  yht   | 39   |                                                             |
+| 09.12. | 4    | arkkitehtuuridokumentin päivitys, käyttöohjeen laadinta     |
+|  yht   | 43   |                                                             |

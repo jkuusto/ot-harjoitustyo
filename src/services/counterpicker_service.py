@@ -92,19 +92,9 @@ class CounterPickerService:
 
         Raises:
             ValueError: If relationship already exists or IDs are invalid.
+            Other errors might be raised as well.
         """
         self._counter_repository.create(character_id, counter_character_id)
-
-    def get_counters_for_character(self, character_id):
-        """Get all counters for a specific character.
-
-        Args:
-            character_id: ID of the character.
-
-        Returns:
-            List of Counter objects.
-        """
-        return self._counter_repository.find_counters_for(character_id)
 
     def get_counter_details(self, character_id):
         """Get detailed counter information for a character.

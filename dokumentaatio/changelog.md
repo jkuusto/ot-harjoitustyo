@@ -35,5 +35,10 @@
 
 ## Viikko 6
 
-- Lisätty docstringejä koodikannan luettavuuden parantamiseksi
 - Käyttäjä voi poistaa vastavalintasuhteen
+- Lisätty docstringejä koodikannan luettavuuden parantamiseksi
+- Koodikanta refaktoroitu käyttämään service layeria
+- Arkkitehtuuridokumentointiin lisätty rakennekuvaus
+- Arkkitehtuuridokumentoinnin sovelluslogiikkaosiota laajennettu
+- Arkkitehtuuridokumentoinnin sekvenssidiagrammit päivitetty vastaamaan refaktoroitua koodikantaa
+- Lisätty käyttöohje
