@@ -27,7 +27,7 @@ Tekstikäyttöliittymä sopii hyvin sovelluksen tarkoitukseen perusversiossa.
 
 ## Jatkokehitysideoita
 
-Sovellusta voi täydentää seuraavilla toiminallisuuksilla:
+Sovellusta voidaan täydentää tulevaisuudessa seuraavilla toiminallisuuksilla:
 
 - Käyttäjä voi muokata hahmon nimeä
   - Hyödyllinen ominaisuus kirjoitusvirheiden varalle

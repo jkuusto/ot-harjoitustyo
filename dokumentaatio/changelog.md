@@ -42,3 +42,9 @@
 - Arkkitehtuuridokumentoinnin sovelluslogiikkaosiota laajennettu
 - Arkkitehtuuridokumentoinnin sekvenssidiagrammit päivitetty vastaamaan refaktoroitua koodikantaa
 - Lisätty käyttöohje
+
+## Viikko 7
+
+- Testattu, että hahmon lisäys toimii servicellä
+- Lisätty testausraportti
+- Dokumentointia päivitetty

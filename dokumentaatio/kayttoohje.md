@@ -4,7 +4,7 @@ Voit ladata projektin viimeisimmän [releasen](https://github.com/jkuusto/ot-har
 
 ## Konfigurointi
 
-Tietokannan tiedostonimen voi halutessaan konfiguroida mieleisekseen. Luo oma _.env_-tiedosto seuraavalla komennolla:
+Tietokannan tiedostonimen halutessaan konfiguroida mieleisekseen. Tämä on valinnaista. Luo oma _.env_-tiedosto seuraavalla komennolla:
 
 ```bash
 cp .env.example .env
@@ -36,8 +36,10 @@ poetry run invoke start
 
 1. Ennen countereiden (vastavalintasuhteiden) lisäämistä tulee sovellukseen lisätä hahmoja.
    - Lisää hahmoja valitsemalla `Add character` ja syöttämällä hahmon nimi.
+   - Lisää ainakin kaksi hahmoa.
 2. Ennen countereiden hakua tulee sovellukseen lisätä vähintään yksi hahmojen välinen counter-suhde.
    - Lisää counter valitsemalla `Add counter` ja syöttämällä ensin hahmon nimi, jolle counter lisätään; syötä sen jälkeen hahmon nimi, joka toimii counterina em. hahmolle.
+   - Huom! Molemmat hahmot tulee olla luotu etukäteen kohdassa 1.
 3. Nyt voit hakea countereita valitsemalla `Search counters` ja syöttämällä sen hahmon nimen, jonka counterit haluat nähdä.
 
 Countereita ja hahmoja voi poistaa valinnoilla `Delete counter` ja `Delete character`.

@@ -1,6 +1,6 @@
 # Kielimallien käyttö projektissa
 
-Projektin koodikannassa on osittain kielimallin avulla generoitua koodia seuraavissa osissa:
+Projektin koodikannassa on ainakin osittain kielimallin avulla generoitua koodia seuraavissa osissa:
 
 - counter_repository.py
   - create()
@@ -14,4 +14,4 @@ Projektin koodikannassa on osittain kielimallin avulla generoitua koodia seuraav
 - counterpicker_service.py
   - kaikki metodit paitsi delete_counter_relationship()
 
-Projektin docstringit ovat alunperin kielimallin kirjoittamia, ja muokattu tarvittaessa.
+Projektin docstringit ovat alunperin kielimallin kirjoittamia, jotka on käyty läpi ja muokattu tarpeen mukaan.

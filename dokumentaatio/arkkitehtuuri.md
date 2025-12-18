@@ -47,6 +47,12 @@ Toiminnallisista kokonaisuuksista vastaa [CounterPickerService](src/services/cou
 
 _CounterPickerServicellä_ on pääsy hahmoihin ja vastavalintasuhteisiin luokkien [CharacterRepository](src/repositories/character_repository.py) ja [CounterRepository](src/repositories/counter_repository.py) kautta. Toteutukset injektoidaan sovelluslogiikalle luokan konstruktorikutsussa.
 
+## Tietojen pysyväistallennus
+
+Pakkauksen _repositories_ luokat `CharacterRepository` ja `CounterRepository` ovat vastuussa tietojen tallentamisesta SQLite-tietokantaan.
+
+Luokat noudattavat repository-suunnittelumallia, jolloin ne ovat mahdollista korvata uusilla toteutuksilla, jos datan tallennustapaa halutaan vaihtaa.
+
 ## Päätoiminnallisuudet
 
 Tässä kuvataan sovelluksen päätoiminnallisuuksien toimintalogiikkaa sekvenssikaavioina.
