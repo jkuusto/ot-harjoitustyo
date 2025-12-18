@@ -4,8 +4,10 @@
 
 ## Dokumentaatio
 
+- [Käyttöohje](https://github.com/jkuusto/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
 - [Vaatimusmäärittely](https://github.com/jkuusto/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 - [Arkkitehtuurikuvaus](https://github.com/jkuusto/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+- [Testausdokumentti](https://github.com/jkuusto/ot-harjoitustyo/blob/main/dokumentaatio/testaus.md)
 - [Työaikakirjanpito](https://github.com/jkuusto/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](https://github.com/jkuusto/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 - [Kielimalliseloste](https://github.com/jkuusto/ot-harjoitustyo/blob/main/dokumentaatio/kielimallit.md)
